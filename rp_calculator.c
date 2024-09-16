@@ -21,6 +21,14 @@ void push(double value) {
 }
 
 // Module 3: Pop Function
+// Function to display the top of the stack without popping it
+void display_top() {
+    if (top < 0) {
+        printf("Stack is empty\n");
+    } else {
+        printf("Top of the stack: %.2f\n", stack[top]);
+    }
+}
 
 // Module 4: Display Top of Stack
 
