@@ -31,6 +31,14 @@ void display_top() {
 }
 
 // Module 4: Display Top of Stack
+// Function to display the top of the stack without popping it
+void display_top() {
+    if (top < 0) {
+        printf("Stack is empty\n");
+    } else {
+        printf("Top of the stack: %.2f\n", stack[top]);
+    }
+}
 
 // Module 6: Main Function
 
