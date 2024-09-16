@@ -40,6 +40,45 @@ void display_top() {
     }
 }
 
-// Module 6: Main Function
+// Module 5: Evaluate Function
+// Function to evaluate the Reverse Polish expression
+void evaluate(char operator) {
+    double operand1, operand2;
+    
+    switch (operator) {
+        case '+':
+            operand2 = pop();
+            operand1 = pop();
+            push(operand1 + operand2);
+            break;
+        case '-':
+            operand2 = pop();
+            operand1 = pop();
+            push(operand1 - operand2);
+            break;
+        case '*':
+            operand2 = pop();
+            operand1 = pop();
+            push(operand1 * operand2);
+            break;
+        case '/':
+            operand2 = pop();
+            operand1 = pop();
+            if (operand2 != 0) {
+                push(operand1 / operand2);
+            } else {
+                printf("Error: Division by zero\n");
+                exit(1);
+            }
+            break;
+        case '=':
+            display_top();
+            break;
+        default:
+            printf("Invalid operator\n");
+            exit(1);
+    }
+}
 
+// Module 6: Main Function
 // Module 7: Final Test and Output
