@@ -155,14 +155,14 @@ void run_tests() {
     evaluate('*');
     check_top(45);
 
-    // Test 3: Division (15 / 3 = 5)
+    // Test 3: Division (15 / 3 = 5) 
     reset_stack();
     push(15);
     push(3);
     evaluate('/');
     check_top(5);
 
-    // Test 4: Subtraction (10 - 3 = 7)
+    // Test 4: Subtraction (10 - 3 = 7) 
     reset_stack();
     push(10);
     push(3);
