@@ -81,4 +81,36 @@ void evaluate(char operator) {
 }
 
 // Module 6: Main Function
+int main() {
+    char input[20];
+    double num;
+
+    printf("Enter instructions (? to push, + - * / for operations, = to display top, q to quit, test to run tests):\n");
+
+    while (1) {
+        printf("> ");
+        scanf("%s", input);
+
+        if (input[0] == '?') {
+            // Push operand onto the stack
+            scanf("%lf", &num);
+            push(num);
+        } else if (input[0] == '+' || input[0] == '-' || input[0] == '*' || input[0] == '/' || input[0] == '=') {
+            // Perform the operation or display the top
+            evaluate(input[0]);
+        } else if (input[0] == 'q') {
+            // Exit the program
+            break;
+        } else if (strcmp(input, "test") == 0) {
+            // Run tests when 'test' is entered
+            run_tests();
+            break; // Exit after running tests
+        } else {
+            printf("Invalid input\n");
+        }
+    }
+
+    return 0;
+}
+
 // Module 7: Final Test and Output
