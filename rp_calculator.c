@@ -2,6 +2,8 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <ctype.h>
+#include <assert.h>
+#include <string.h>
 
 #define MAX 100 // Maximum size of the stack
 
@@ -102,7 +104,7 @@ int main() {
             // Exit the program
             break;
         } else if (strcmp(input, "test") == 0) {
-            // Run tests when 'test' is entered
+            // Run tests when 'test' is enteredt
             run_tests();
             break; // Exit after running tests
         } else {
@@ -110,7 +112,71 @@ int main() {
         }
     }
 
+
+
+
     return 0;
 }
 
 // Module 7: Final Test and Output
+// Helper function to reset the stack for tests
+void reset_stack() {
+    top = -1;
+}
+
+// Helper function to check the top of the stack
+void check_top(double expected) {
+    if (top < 0) {
+        printf("Stack is empty\n");
+        exit(1);
+    } else {
+        double actual = stack[top];
+        assert(actual == expected); // Validate the top of the stack
+    }
+}
+
+// Function to test the entire RPN calculator functionality
+void run_tests() {
+    printf("Running tests...\n");
+
+    // Test 1: Simple addition (5 + 10 = 15)
+    reset_stack();
+    push(5);
+    push(10);
+    evaluate('+');
+    check_top(15);
+
+    // Test 2: Addition and multiplication ((5 + 10) * 3 = 45)
+    reset_stack();
+    push(5);
+    push(10);
+    evaluate('+');
+    push(3);
+    evaluate('*');
+    check_top(45);
+
+    // Test 3: Division (15 / 3 = 5)
+    reset_stack();
+    push(15);
+    push(3);
+    evaluate('/');
+    check_top(5);
+
+    // Test 4: Subtraction (10 - 3 = 7)
+    reset_stack();
+    push(10);
+    push(3);
+    evaluate('-');
+    check_top(7);
+
+    // Test 5: Division by zero error (10 / 0)
+    reset_stack();
+    push(10);
+    push(0);
+    printf("Expecting Division by zero error:\n");
+    evaluate('/'); // This should print an error message and exit
+    
+    // Additional tests can be added similarly...
+
+    printf("All tests passed!\n");
+}
